@@ -1,0 +1,18 @@
+@media print {
+  :root { color-scheme: light; }
+  body { background: #fff; color: #111827; }
+  #app { max-width: none; padding: 0; }
+  .bottom-nav, .no-print, .toolbar, .quick-grid, button { display: none !important; }
+  .screen-head { margin-bottom: 10px; }
+  h1 { font-size: 28px; color: #111827; }
+  h2 { break-after: avoid; color: #111827; }
+  p, dd, dt, td, th, .card-kicker { color: #111827; }
+  .card, .hero-panel { box-shadow: none; border: 1px solid #cbd5e1; background: #fff; break-inside: avoid; }
+  .grid, .two { display: block; }
+  .grid > * { margin-bottom: 10px; }
+  .print-route { break-before: page; }
+  .print-route:first-of-type { break-before: auto; }
+  table { font-size: 10px; page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+  a::after { content: " (" attr(href) ")"; font-size: 9px; overflow-wrap: anywhere; }
+}

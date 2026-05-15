@@ -1,0 +1,11 @@
+export const planB = [
+  { id: "heat", title: "Жара", cancel: "Outdoor walking, markets, long promenade", replace: "Mall, museum, hotel pool, early dinner", cost: "low-medium", time: "2-4 h", food: "Food court / hotel restaurant", transport: "Taxi door-to-door" },
+  { id: "rain", title: "Дождь", cancel: "Beach, Water Blow, exposed viewpoints", replace: "K11, Grandview, Parc Central, Devdan, museums", cost: "low-medium", time: "2-5 h", food: "Mall dining", transport: "Taxi / MTR where covered" },
+  { id: "typhoon", title: "Тайфун", cancel: "All parks, beaches, ferries, exposed transport", replace: "Stay in hotel, nearest mall only if safe", cost: "low", time: "full day", food: "Hotel / delivery", transport: "Avoid travel unless official advice allows" },
+  { id: "kids-tired", title: "Усталость детей", cancel: "Second attraction of the day", replace: "Pool, nap, nearby dinner", cost: "low", time: "half day", food: "Hotel or Bali Collection / K11", transport: "Taxi back immediately" },
+  { id: "flight-delay", title: "Задержка рейса", cancel: "First-day sightseeing", replace: "Meal buffer, hotel check-in, soft walk only", cost: "medium", time: "variable", food: "Airport / hotel", transport: "Taxi with flight tracking" },
+  { id: "bad-visibility", title: "Плохая видимость Peak / Canton Tower", cancel: "Paid observation decks", replace: "Mall, museum, promenade, dinner", cost: "saves ticket cost", time: "2-3 h", food: "IFC / Parc Central / K11", transport: "MTR/taxi" },
+  { id: "room-not-ready", title: "Номер не готов", cancel: "Unpack and nap", replace: "Pool bag, lunch, grocery run, lounge", cost: "low-medium", time: "2-4 h", food: "Hotel / Bali Collection", transport: "Leave luggage at hotel" },
+  { id: "long-queues", title: "Длинные очереди в парках", cancel: "Low-priority rides", replace: "Shows, indoor rest, Premier/cabana decision", cost: "medium-high", time: "saves energy", food: "Park restaurant before rush", transport: "Stay flexible" },
+  { id: "stomach", title: "Плохое самочувствие", cancel: "Markets, seafood, long car day", replace: "Hotel rest, pharmacy, plain food", cost: "low", time: "half/full day", food: "Rice, soup, bottled water", transport: "Taxi to clinic if needed" }
+];

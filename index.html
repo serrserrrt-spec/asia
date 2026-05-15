@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#07111f">
+    <title>Asia Family Trip 2026</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./assets/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+    <link rel="stylesheet" href="./src/styles.css">
+    <link rel="stylesheet" href="./src/print.css" media="print">
+  </head>
+  <body>
+    <main id="app" aria-live="polite"></main>
+    <nav id="bottomNav" class="bottom-nav" aria-label="Основная навигация">
+      <button data-to="/" class="active" aria-label="Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h8V3H3v10Zm0 8h8v-6H3v6Zm10 0h8V11h-8v10Zm0-18v6h8V3h-8Z"/></svg>
+        Главная
+      </button>
+      <button data-to="/today" aria-label="Сегодня">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+        Сегодня
+      </button>
+      <button data-to="/routes" aria-label="Маршрут">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v18M18 3v18M6 6h12M6 12h12M6 18h12"/></svg>
+        Маршрут
+      </button>
+      <button data-to="/planner" aria-label="Планирование">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h10M4 19h7"/><path d="m16 17 2 2 4-4"/></svg>
+        План
+      </button>
+      <button data-to="/budget" aria-label="Бюджет">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v12H4z"/><path d="M16 11h4M7 7V5h10v2"/></svg>
+        Бюджет
+      </button>
+      <button data-to="/checklists" aria-label="Чек-листы">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 2 2 4-5M5 4h14v16H5z"/></svg>
+        Чек
+      </button>
+    </nav>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
