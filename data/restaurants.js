@@ -13,7 +13,7 @@ const r = (id, city, name, mealType, routeFit, budgetMin, budgetMax, currency, e
   risk: extra.risk || "Цены и часы работы нужно перепроверить."
 });
 
-export const restaurants = [
+const rawRestaurants = [
   r("gz-dimsum", "Guangzhou", "Dian Dou De / Tao Tao Ju dim sum lunch", "lunch", ["A","B","C"], 450, 750, "CNY", { adults: "Dim sum, roast goose, чай", kids: "Булочки с BBQ pork, shrimp dumplings, лапша" }),
   r("food-gz-bingsheng", "Guangzhou", "Bingsheng / Lingnan Cantonese dinner", "dinner", ["A","B","C"], 650, 1100, "CNY", { reservationNeeded: true }),
   r("gz-mall-food", "Guangzhou", "Food court / mall lunch for hot day", "lunch", ["A","B","C"], 280, 520, "CNY"),
@@ -39,6 +39,84 @@ export const restaurants = [
   r("hk-ifc-lunch", "Hong Kong", "Central / IFC lunch before HSR", "lunch", ["A","C"], 850, 1600, "HKD"),
   r("hk-snack-buffer", "Hong Kong", "Bakery / snack / water buffer", "snack", ["A","B","C"], 250, 500, "HKD")
 ];
+
+const restaurantDetails = {
+  "gz-dimsum": {
+    whyGo: "Главный понятный обед в Гуанчжоу: быстро, местно, удобно с детьми.",
+    whatToOrderAdults: "Har gow, siu mai, char siu bao, roast goose, rice rolls, jasmine/pu-erh tea.",
+    whatToOrderKids: "BBQ pork buns, shrimp dumplings, plain noodles/rice, egg tart.",
+    bestTime: "11:00-12:30, до пиковых очередей"
+  },
+  "food-gz-bingsheng": {
+    whyGo: "Хороший кантонский ужин без экспериментов после прогулок.",
+    whatToOrderAdults: "Roast goose, steamed fish, crispy chicken, seasonal greens, суп.",
+    whatToOrderKids: "Рис, курица, лапша, steamed egg, простые dumplings.",
+    bestTime: "18:00-19:00, лучше бронировать"
+  },
+  "gz-mall-food": {
+    whyGo: "План для жары: кондиционер, быстрый выбор и понятные блюда для детей.",
+    whatToOrderAdults: "Noodles, rice bowls, Cantonese roast meat, bubble tea без льда.",
+    whatToOrderKids: "Рис, лапша, курица, булочки, мороженое после еды."
+  },
+  "bali-melia-lunch": {
+    whyGo: "Самый безопасный обед в день восстановления: не нужно ехать и ждать.",
+    whatToOrderAdults: "Nasi goreng, grilled fish/chicken, salads, coconut water.",
+    whatToOrderKids: "Pasta, fries, chicken, rice, fruit plate."
+  },
+  "bali-collection-dinner": {
+    whyGo: "Простой вечер рядом с отелем: можно выбрать кухню по настроению без длинного такси.",
+    whatToOrderAdults: "Indonesian classics, grilled seafood, Thai/Japanese options по месту.",
+    whatToOrderKids: "Pizza/pasta, rice, chicken satay без острого, smoothies без льда."
+  },
+  "food-bali-koral": {
+    whyGo: "Премиальный ужин ради впечатления, а не просто еды. Нужна бронь.",
+    whatToOrderAdults: "Tasting menu или seafood mains; уточнить minimum spend.",
+    whatToOrderKids: "Заранее запросить детское меню/простые блюда.",
+    bestTime: "Ранний ужин, чтобы не перегружать детей"
+  },
+  "bali-waterbom-food": {
+    whyGo: "Внутри парка удобнее не выходить наружу: экономит силы и время.",
+    whatToOrderAdults: "Burgers, bowls, Indonesian dishes, много воды.",
+    whatToOrderKids: "Pizza, fries, nuggets, fruit, ice cream после активной части."
+  },
+  "bali-uluwatu-dinner": {
+    whyGo: "После Kecak лучше заранее иметь точку ужина, иначе дети устанут в пробках.",
+    whatToOrderAdults: "Grilled seafood/chicken, nasi campur, fresh juice.",
+    whatToOrderKids: "Rice, satay без острого, fries, pasta."
+  },
+  "bali-grocery": {
+    whyGo: "Контроль воды, фруктов и перекусов без риска рынка.",
+    whatToOrderAdults: "Вода, кофе, фрукты с кожурой, йогурты, sunscreen/аптечные мелочи.",
+    whatToOrderKids: "Crackers, bakery, bananas, apples, juice boxes."
+  },
+  "food-bali-jimbaran": {
+    whyGo: "Классический морской ужин на песке, но только с заранее согласованной ценой.",
+    whatToOrderAdults: "Grilled prawns/fish, squid, clams, rice, vegetables.",
+    whatToOrderKids: "Grilled fish без острого, rice, corn, fries."
+  },
+  "hk-foodhall": {
+    whyGo: "Лучший формат в TST: быстро, чисто, много вариантов и близко к гавани.",
+    whatToOrderAdults: "Dim sum, noodles, Japanese/Thai bowls, milk tea.",
+    whatToOrderKids: "Rice bowls, dumplings, bakery, desserts."
+  },
+  "food-hk-tim-ho-wan": {
+    whyGo: "Понятный dim sum бренд: хорошо как короткий кантонский обед.",
+    whatToOrderAdults: "Baked BBQ pork buns, har gow, siu mai, rice rolls.",
+    whatToOrderKids: "BBQ pork buns, dumplings, plain rice/noodles."
+  },
+  "hk-disney-dining": {
+    whyGo: "В парке питание дороже, но выходить наружу невыгодно по времени.",
+    whatToOrderAdults: "Set meals, noodles/rice, bottled drinks.",
+    whatToOrderKids: "Kids meals, popcorn/snacks, water refill по ситуации."
+  },
+  "hk-ifc-lunch": {
+    whyGo: "Удобно перед HSR: Central/IFC дает кондиционер, еду и понятную логистику к West Kowloon.",
+    whatToOrderAdults: "Noodles, dim sum, salads, coffee.",
+    whatToOrderKids: "Bakery, rice/noodles, dumplings."
+  }
+};
+
+export const restaurants = rawRestaurants.map((restaurant) => ({ ...restaurant, ...(restaurantDetails[restaurant.id] || {}) }));
 
 export const dailyFoodLine = {
   id: "daily-snacks",

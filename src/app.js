@@ -242,6 +242,7 @@ function dayCard(day, nextDay = null) {
 
 function locationCard(location) {
   return `<article class="card location-card ${cityClass(location.city)} ${location.priority === "premium" ? "premium-line" : ""}">
+    ${location.photoUrl ? `<img class="card-photo" src="${location.photoUrl}" alt="${location.name}" loading="lazy">` : ""}
     <div class="card-kicker">${cityLabel(location.city)} · ${typeNames[location.type] || location.type} · ${priorityNames[location.priority] || location.priority}</div>
     <h3>${location.name}</h3>
     <p>${location.whyGo}</p>
@@ -250,6 +251,8 @@ function locationCard(location) {
       <div><dt>Дети</dt><dd>${location.kidsFit}</dd></div>
       <div><dt>Еда рядом</dt><dd>${location.foodNearby}</dd></div>
       <div><dt>Транспорт</dt><dd>${location.transportFromBase}</dd></div>
+      <div><dt>Что смотрим</dt><dd>${location.whatToSee}</dd></div>
+      <div><dt>План Б</dt><dd>${location.planB}</dd></div>
     </dl>
     <p class="risk">Риск: ${location.risk}</p>
     <div class="button-row">${mapLink(location.googleMapsQuery)}${location.officialSourceUrl ? `<a class="link-button" href="${location.officialSourceUrl}" target="_blank" rel="noopener">Источник</a>` : ""}</div>
@@ -347,9 +350,18 @@ function dayDetail(day) {
     <p><strong>План Б:</strong> ${day.planB}</p>
     <p><strong>Взять:</strong> ${day.packing}</p>
     ${plan.notes ? `<p><strong>Мои заметки:</strong> ${plan.notes}</p>` : ""}
+    <h3>Что смотрим по месту</h3>
+    <div class="grid linked-grid">${locs.map((loc) => `<article class="mini-card">
+      ${loc.photoUrl ? `<img class="mini-photo" src="${loc.photoUrl}" alt="${loc.name}" loading="lazy">` : ""}
+      <h4>${loc.name}</h4>
+      <p><strong>Что смотрим:</strong> ${loc.whatToSee}</p>
+      <p><strong>Как добираемся:</strong> ${loc.transportFromBase}</p>
+      <p><strong>Еда рядом:</strong> ${loc.foodNearby}</p>
+      <div class="button-row">${mapLink(loc.googleMapsQuery, "Локация")}</div>
+    </article>`).join("")}</div>
     <div class="split">
-      <div><h3>Связанные рестораны</h3>${food.map((item) => `<p><a href="${mapsUrl(item.googleMapsQuery)}" target="_blank" rel="noopener">${item.name}</a>: ${item.budgetMin.toLocaleString("ru-RU")} - ${item.budgetMax.toLocaleString("ru-RU")} ${item.currency}</p>`).join("") || "<p>Не выбрано.</p>"}</div>
-      <div><h3>Связанный транспорт</h3>${moves.map((move) => `<p>${move.from} → ${move.to}: ${move.taxiTime}</p>`).join("") || "<p>Не выбрано.</p>"}</div>
+      <div><h3>Связанные рестораны и меню</h3>${food.map((item) => `<div class="food-link"><p><a href="${mapsUrl(item.googleMapsQuery)}" target="_blank" rel="noopener"><strong>${item.name}</strong></a>: ${item.budgetMin.toLocaleString("ru-RU")} - ${item.budgetMax.toLocaleString("ru-RU")} ${item.currency}</p><p><strong>Взрослым:</strong> ${item.whatToOrderAdults}</p><p><strong>Детям:</strong> ${item.whatToOrderKids}</p>${item.sourceUrl ? `<a class="link-button" href="${item.sourceUrl}" target="_blank" rel="noopener">Меню / сайт</a>` : ""}</div>`).join("") || "<p>Не выбрано.</p>"}</div>
+      <div><h3>Связанный транспорт</h3>${moves.map((move) => `<div class="food-link"><p><strong>${move.from} → ${move.to}</strong></p><p>Такси: ${move.taxiInstruction}</p><p>${move.taxiTime} · ${move.taxiBudget}</p><p>Общественный: ${move.publicInstruction}</p><a class="link-button" href="${mapsUrl(move.googleMapsRouteQuery)}" target="_blank" rel="noopener">Маршрут</a></div>`).join("") || "<p>Не выбрано.</p>"}</div>
     </div>
     ${dayPlanner(day)}
     <div class="subcards">${locs.map((l) => `<a href="${mapsUrl(l.googleMapsQuery)}" target="_blank" rel="noopener">${l.name}</a>`).join("")}</div>

@@ -1,10 +1,11 @@
-const CACHE_NAME = "asia-family-trip-2026-v4";
+const CACHE_NAME = "asia-family-trip-2026-v6";
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./package.json",
   "./src/app.js",
+  "./src/enhancements.js",
   "./src/router.js",
   "./src/state.js",
   "./src/budget.js",
